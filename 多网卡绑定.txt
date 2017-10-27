@@ -1,0 +1,37 @@
+1、增加网卡驱动支持
+	vim /etc/modprobe.d/bonding.conf
+	添加
+		allas bond0 bonding
+
+2、修改物理网卡配置文件
+	vim /etc/sysconfig/network-scripts/ifcfg-eth0
+	原有ip地址信息删除，同时增加
+	BOOTPROTO=none
+	MASTER=bond0
+	SLAVE=yes
+
+	同样操作另外一块网卡
+	vim /etc/sysconfig/network-scripts/ifcfg-eth1
+
+3、配置bond配置文件
+
+	vim /etc/sysconfig/network-scripts/ifcfg-bond0
+
+	DEVICE=bond0
+	IPADDR=XX.XX.XX.XX
+	PREFIX=XX
+	GATEWAY=xx.xx.xx.xx
+	ONBOOT=yes
+	BOOTPROTO=none
+	USERCTL=no
+	BONDING_OPTS="mode=1 miimon=50"
+
+4、重启网络
+	service network restart
+
+
+5、验证
+	通断  其他地址ping XX.XX.XX.XX
+	模式检查 watch -n 1 ifconfig
+
+

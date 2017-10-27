@@ -1,0 +1,36 @@
+1、上传iso文件到服务器
+
+2、挂载iso镜像文件
+
+	# mount CentOS-7.0-1406-x86_64-DVD.iso /mnt/Packages/ -t iso9660 -o loop
+
+3、拷贝镜像下包到指定目录
+
+	# cp /mnt/Packages/Packages /mnt/yumlocal/
+
+4、安装createrepo
+	# yum install createrepo
+	# rpm -ivh createrepo-版本号.rpm
+
+5、创建repo文件
+	
+	# vi /etc/yum.repos.d/local.repo
+	
+	加入如下内容：
+	[localrepo]
+	name=localrepo
+	baseurl=file:///mnt/yumlocal/
+
+6、创建依赖关系
+
+	# createrepo -g /mnt/Package/repodata/xxxx-c7-x86_64-comps.xml /mnt/yumlocal/ 
+	
+7、生成新的yumcache
+	
+	# yum clean all
+	# yum makecache
+
+8、yum指定源安装
+
+	# yum install lrzsz --enablerepo=localrepo
+
