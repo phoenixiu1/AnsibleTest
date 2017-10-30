@@ -11,6 +11,7 @@
 4、安装createrepo
 	# yum install createrepo
 	# rpm -ivh createrepo-版本号.rpm
+12121121212
 
 5、创建repo文件
 	
