@@ -1,0 +1,10 @@
+- hosts: testgroup
+  remote_user: root
+  tasks:
+  - name: changxiaotiantian
+    shell: echo '{{ item.password }}' | passwd --stdin xiaotiantian
+    when: ansible_ens160.ipv4.address == '{{ item.ipaddress }}'
+    with_items:
+      - { ipaddress: '10.0.1.121', password: '12345' }
+      - { ipaddress: '10.0.1.223', password: '12346' }
+      - { ipaddress: '10.0.2.12', password: '12347' }
