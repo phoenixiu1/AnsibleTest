@@ -13,6 +13,9 @@
 	# rpm -ivh createrepo-版本号.rpm
 12121121212
 
+
+12121121212
+
 5、创建repo文件
 	
 	# vi /etc/yum.repos.d/local.repo
