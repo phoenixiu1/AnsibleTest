@@ -5,4 +5,4 @@
     shell: echo '{{ item.password }}' | passwd --stdin xiaotiantian
     when: ansible_ens160.ipv4.address == '{{ item.ipaddress }}'
     with_items:
-      - { ipaddress: '10.0.1.121', password: '3456789' }
+      - { ipaddress: '10.0.1.121', password: '23456789' }
