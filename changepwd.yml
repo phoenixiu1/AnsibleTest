@@ -1,8 +1,8 @@
-- hosts: linux-ens160
+- hosts: ansible-client-eth0
   remote_user: root
   tasks:
   - name: change xiaotiantian
     shell: echo item.password | passwd --stdin xiaotiantian
     when: ansible_eth0.ipv4.address == item.ipaddress
     with_items:
-      - { ipaddress: '10.0.1.121', password: '23456789' }
+      - { ipaddress: '172.16.101.133', password: '123456' }
