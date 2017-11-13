@@ -1,7 +1,8 @@
 - hosts: ansible-client-eth0
   remote_user: root
   tasks:
-  - name: change xiaotiantian
+  - name: adduser and set passwd
+    shell: useradd xiaotiantian
     shell: echo item.password | passwd --stdin xiaotiantian
     when: ansible_eth0.ipv4.address == item.ipaddress
     with_items:
