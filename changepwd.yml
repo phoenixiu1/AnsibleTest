@@ -2,8 +2,8 @@
   remote_user: root
   tasks:
   - name: adduser and set passwd
-    shell: useradd xiaotiantian
-    shell: echo item.password | passwd --stdin xiaotiantian
+    shell: useradd xiaotiantian & echo item.password | passwd --stdin xiaotiantian
     when: ansible_eth0.ipv4.address == item.ipaddress
     with_items:
       - { ipaddress: '172.16.101.133', password: '12345678' }
+      - { ipaddress: '10.0.17.70', password: '1234567' }
