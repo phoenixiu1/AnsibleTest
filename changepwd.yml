@@ -3,7 +3,7 @@
   tasks:
   - name: set passwd
     shell: echo {{ item.password }} | passwd --stdin xiaotiantian
-    when: ansible_eth0.ipv4.address == {{ item.ipaddress }}
+    when: ansible_eth0.ipv4.address == item.ipaddress
     with_items:
       - { ipaddress: '192.168.0.35', password: '123456' }
       - { ipaddress: '192.168.0.36', password: '678910' }
