@@ -3,8 +3,6 @@
   vars:
   - username:"xiaotiantian"
   tasks:
-  - name: add user xiaotiantian
-    user: name={{username}}
   - name: set passwd
     shell: echo item.password | passwd --stdin xiaotiantian
     when: ansible_eth0.ipv4.address == item.ipaddress
