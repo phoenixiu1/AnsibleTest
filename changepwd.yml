@@ -1,7 +1,7 @@
 - hosts: ansible-client-eth0
   remote_user: root
   vars:
-  -username:"xiaotiantian"
+  - username:"xiaotiantian"
   tasks:
   - name: add user xiaotiantian
     user: name={{username}}
