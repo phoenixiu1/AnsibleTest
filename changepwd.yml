@@ -6,4 +6,4 @@
     when: ansible_eth0.ipv4.address == item.ipaddress
     with_items:
       - { ipaddress: '172.16.101.133', password: '12345678' }
-      - { ipaddress: '10.0.17.70', password: '1234567' }
+      - { ipaddress: '10.0.17.70', password: '123456' }
