@@ -1,8 +1,12 @@
 - hosts: ansible-client-eth0
   remote_user: root
+  vars:
+  -username:"xiaotiantian"
   tasks:
-  - name: adduser and set passwd
-    shell: useradd xiaotiantian & echo item.password | passwd --stdin xiaotiantian
+  - name: add user xiaotiantian
+    user: name={{username}}
+  - name: set passwd
+    shell: echo item.password | passwd --stdin xiaotiantian
     when: ansible_eth0.ipv4.address == item.ipaddress
     with_items:
       - { ipaddress: '172.16.101.133', password: '12345678' }
