@@ -1,7 +1,5 @@
 - hosts: ansible-client-eth0
   remote_user: root
-  vars:
-  - username:"xiaotiantian"
   tasks:
   - name: set passwd
     shell: echo item.password | passwd --stdin xiaotiantian
