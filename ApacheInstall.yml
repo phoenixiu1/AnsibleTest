@@ -1,0 +1,25 @@
+- hosts: ansible-client-eth0
+  remote_user: root
+
+  tasks:
+   - name: install apache
+     yum: name={{ item }} state=present
+     with_items:
+     - httpd
+     - httpd-devel
+   - name: copy config file
+     copy:
+       src: "{{ item.src }}"
+       dest: "{{ item.dest }}"
+     with_items:
+     - {
+       src: "/tmp/httpd.conf",
+       dest: "/etc/httpd/conf/httpd.conf" }
+     - {
+       src: "/tmp/httpd-vhosts.conf",
+       dest: "/etc/httpd/conf/httpd-vhosts.conf" }
+   - name:  Apache status
+     service:
+        name=httpd.service
+        state=started
+        enabled=yes
