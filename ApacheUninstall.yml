@@ -2,10 +2,14 @@
   remote_user: root
 
   tasks:
-   - name: install apache
+   - name: stop Apache
+     service:
+        name=httpd.service
+        state=stopped
+   - name: remove apache
      yum: 
        name={{ item }}
-       state=present
+       state=absent
      with_items:
        - httpd
        - httpd-devel
